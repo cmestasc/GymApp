@@ -8,7 +8,7 @@ import { GymModule } from './gym/gym.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
