@@ -4,6 +4,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { MaterialModule } from '../material/material.module';
 import { EjerciciosComponent } from './pages/ejercicios/ejercicios.component';
 import { TarjetaComponent } from './components/tarjeta/tarjeta.component';
+import { MusculoTarjetaComponent } from './components/musculo-tarjeta/musculo-tarjeta.component';
+import { RouterModule } from '@angular/router';
+import { GymRoutingModule } from './gym-routing.module';
 
 
 
@@ -11,11 +14,14 @@ import { TarjetaComponent } from './components/tarjeta/tarjeta.component';
   declarations: [
     HomeComponent,
     EjerciciosComponent,
-    TarjetaComponent
+    TarjetaComponent,
+    MusculoTarjetaComponent
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    RouterModule,
+    GymRoutingModule
   ],
   exports: [
     
