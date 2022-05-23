@@ -5,16 +5,12 @@ import { HomeComponent } from './gym/pages/home/home.component';
 
 const routes: Routes = [
   {
-    path: 'home',
-    component: HomeComponent
-  },
-  {
-    path: 'ejercicios',
-    component: EjerciciosComponent
+    path: 'gymApp',
+    loadChildren: () => import ('./gym/gym.module').then(m => m.GymModule)
   },
   {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: 'gymApp'
   }
 
 ]
