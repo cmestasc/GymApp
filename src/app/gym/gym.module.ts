@@ -7,7 +7,9 @@ import { TarjetaComponent } from './components/tarjeta/tarjeta.component';
 import { MusculoTarjetaComponent } from './components/musculo-tarjeta/musculo-tarjeta.component';
 import { RouterModule } from '@angular/router';
 import { GymRoutingModule } from './gym-routing.module';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MusculoComponent } from './pages/musculo/musculo.component';
+import { ListadoComponent } from './pages/listado/listado.component';
 
 
 @NgModule({
@@ -15,13 +17,16 @@ import { GymRoutingModule } from './gym-routing.module';
     HomeComponent,
     EjerciciosComponent,
     TarjetaComponent,
-    MusculoTarjetaComponent
+    MusculoTarjetaComponent,
+    MusculoComponent,
+    ListadoComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
     RouterModule,
-    GymRoutingModule
+    GymRoutingModule,
+    FlexLayoutModule
   ],
   exports: [
     

@@ -1,31 +1,17 @@
 <mat-card>
     <mat-card-header>
-        <mat-card-title>Biceps</mat-card-title>
-        <mat-card-subtitle>heroe.alter_ego</mat-card-subtitle>
+        <mat-card-title>{{musculo | titlecase}}</mat-card-title>
+        <!-- <mat-card-subtitle>heroe.alter_ego</mat-card-subtitle> -->
     </mat-card-header>
 
-    <!-- <img mat-card-image src="assets/heroes/{{heroe.id}}.jpg"> -->
-    <img mat-card-image>
-    <mat-card-content>
-        <h3>heroe.publisher</h3>
-        <p>
-            <strong>Primera aparición en </strong> heroe.first_appearance
-            <br>
-            <strong>Personajes: </strong> heroe.characters
-        </p>
-    </mat-card-content>
+    <img mat-card-image src="assets/muscles/musculo.jpg">
 
     <mat-card-actions>
         <button mat-button 
                 color="warn"
+                [routerLink]="['/gymApp/ejercicios/', musculo]"
                 >
-            Leer más...
-        </button>
-
-        <button mat-button 
-                color="info"
-                >
-            Editar
+            Mostrar ejercicios
         </button>
     </mat-card-actions>
 </mat-card>
