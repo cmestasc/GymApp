@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listado.component.css']
 })
 export class ListadoComponent implements OnInit {
-  musculos: string [] = ['pectoral', 'hombro', 'biceps', 'triceps', 'espalda', 'cuadriceps', 'femoral', 'gemelo', 'abdomen'];
+  musculos: string [] = ['pectoral', 'hombro', 'bíceps', 'tríceps', 'espalda', 'cuádriceps', 'femoral', 'gemelo', 'abdomen'];
   
   constructor() { }
 
