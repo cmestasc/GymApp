@@ -10,6 +10,7 @@ import { GymRoutingModule } from './gym-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MusculoComponent } from './pages/musculo/musculo.component';
 import { ListadoComponent } from './pages/listado/listado.component';
+import { EjercicioTarjetaComponent } from './components/ejercicio-tarjeta/ejercicio-tarjeta.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ListadoComponent } from './pages/listado/listado.component';
     TarjetaComponent,
     MusculoTarjetaComponent,
     MusculoComponent,
-    ListadoComponent
+    ListadoComponent,
+    EjercicioTarjetaComponent
   ],
   imports: [
     CommonModule,
