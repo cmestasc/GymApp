@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Musculo } from '../../interfaces/Musculo';
 
 @Component({
   selector: 'app-tarjeta',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TarjetaComponent implements OnInit {
 
-  @Input() musculo!: string;
+  @Input() musculo!: Musculo;
 
   constructor() { }
 

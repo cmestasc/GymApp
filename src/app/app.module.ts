@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { GymModule } from './gym/gym.module';
 
+import { ApiService } from "./gym/services/api.service";
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { GymModule } from './gym/gym.module';
     GymModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
