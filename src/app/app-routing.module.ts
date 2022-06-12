@@ -5,12 +5,20 @@ import { HomeComponent } from './gym/pages/home/home.component';
 
 const routes: Routes = [
   {
+    path: 'auth',
+    loadChildren: () => import ('./auth/auth.module').then(m => m.AuthModule)
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import ('./protected/protected.module').then(m => m.ProtectedModule)
+  },
+  {
     path: 'gymApp',
     loadChildren: () => import ('./gym/gym.module').then(m => m.GymModule)
   },
   {
     path: '**',
-    redirectTo: 'gymApp'
+    redirectTo: 'auth'
   }
 
 ]
