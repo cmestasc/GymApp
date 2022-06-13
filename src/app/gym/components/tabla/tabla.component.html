@@ -1,0 +1,55 @@
+<table mat-table
+       [dataSource]="dataSource" multiTemplateDataRows
+       class="mat-elevation-z8">
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+    <td mat-cell *matCellDef="let element" (click)="getDatosUsuario(element.ID_usuario)"> {{element[column]}}</td>
+    
+  </ng-container>
+  <ng-container matColumnDef="expand">
+    <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button aria-label="expand row" (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+        <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+        <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
+      <div class="example-element-detail"
+           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <div class="example-element-description">
+          <mat-list role="list">
+            <mat-list-item role="listitem"><strong>Nombre:&nbsp;</strong> {{datosUsuario.nombre}}</mat-list-item>
+            <mat-list-item role="listitem"><strong>Apellidos:&nbsp;</strong> {{datosUsuario.apellidos}}</mat-list-item>
+            <mat-list-item role="listitem"><strong>Edad:&nbsp;</strong> {{datosUsuario.edad}}</mat-list-item>
+            <mat-list-item role="listitem"><strong>Peso:&nbsp;</strong> {{datosUsuario.peso}}</mat-list-item>
+            <mat-list-item role="listitem"><strong>Altura:&nbsp;</strong> {{datosUsuario.altura}}</mat-list-item>
+            <mat-list-item role="listitem"><strong>Ciudad:&nbsp;</strong> {{datosUsuario.ciudad}}</mat-list-item>
+            <mat-list-item role="listitem"><strong>Pais:&nbsp;</strong> {{datosUsuario.pais}}</mat-list-item>
+            <mat-list-item role="listitem"><strong>Email:&nbsp;</strong> {{datosUsuario.email}}</mat-list-item>
+          </mat-list>
+          <span class="example-element-description-attribution">
+            <button mat-button color="warn" [routerLink]="['./editar', element.ID_usuario]">
+              Editar
+            </button>
+            <button mat-button color="warn">
+              Eliminar
+            </button>
+          </span>
+        </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;"
+      class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>

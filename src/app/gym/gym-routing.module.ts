@@ -4,16 +4,33 @@ import { RouterModule, Routes } from '@angular/router';
 import { EjerciciosComponent } from './pages/ejercicios/ejercicios.component';
 import { MusculoComponent } from './pages/musculo/musculo.component';
 import { ListadoComponent } from './pages/listado/listado.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { EditarComponent } from './pages/editar/editar.component';
 
 const routes: Routes = [
+ 
   {
     path: '',
     component: HomeComponent,
     children: [
       {
+        path: 'admin',
+        component: AdminComponent,
+        children: [
+          {
+            path: 'editar/:id',
+            component: EditarComponent
+          }
+        ]
+      },
+      {
         path: 'ejercicios',
         component: EjerciciosComponent,
         children : [
+          {
+            path: 'admin',
+            component: AdminComponent
+          },
           {
             path: 'listado',
             component: ListadoComponent,
@@ -27,7 +44,7 @@ const routes: Routes = [
       {
         path: '**',
         redirectTo: 'ejercicios'
-      },
+      }
     ]
   }
 ];

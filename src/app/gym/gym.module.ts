@@ -11,6 +11,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MusculoComponent } from './pages/musculo/musculo.component';
 import { ListadoComponent } from './pages/listado/listado.component';
 import { EjercicioTarjetaComponent } from './components/ejercicio-tarjeta/ejercicio-tarjeta.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { TablaComponent } from './components/tabla/tabla.component';
+import { AcordeonComponent } from './components/acordeon/acordeon.component';
+import { EditarComponent } from './pages/editar/editar.component';
 
 
 @NgModule({
@@ -21,7 +25,11 @@ import { EjercicioTarjetaComponent } from './components/ejercicio-tarjeta/ejerci
     MusculoTarjetaComponent,
     MusculoComponent,
     ListadoComponent,
-    EjercicioTarjetaComponent
+    EjercicioTarjetaComponent,
+    AdminComponent,
+    TablaComponent,
+    AcordeonComponent,
+    EditarComponent
   ],
   imports: [
     CommonModule,
