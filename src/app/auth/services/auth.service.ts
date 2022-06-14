@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { AuthResponse, Usuario } from '../interfaces/interfaces';
-import { catchError, map, of, tap } from 'rxjs';
+import { catchError, map, of, tap, Observable } from 'rxjs';
 
 
 @Injectable({
@@ -10,7 +10,7 @@ import { catchError, map, of, tap } from 'rxjs';
 })
 export class AuthService {
   private baseUrl: string = environment.baseUrl;
-  private _usuario!: Usuario;
+  private _usuario: Usuario | undefined;
   constructor(private http: HttpClient) { }
 
 
@@ -43,6 +43,13 @@ export class AuthService {
       map(resp => resp),
       catchError(err => of(err.error.msg))
     )
+  }
+
+  verificarAutenticacion(): Observable<boolean>{
+    if(localStorage.getItem('usuario')){
+      return of(true);
+    }
+    return of(false);
   }
 
 

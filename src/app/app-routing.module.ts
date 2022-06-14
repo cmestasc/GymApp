@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EjerciciosComponent } from './gym/pages/ejercicios/ejercicios.component';
 import { HomeComponent } from './gym/pages/home/home.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -14,7 +15,9 @@ const routes: Routes = [
   },
   {
     path: 'gymApp',
-    loadChildren: () => import ('./gym/gym.module').then(m => m.GymModule)
+    loadChildren: () => import ('./gym/gym.module').then(m => m.GymModule),
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard]
   },
   {
     path: '**',
