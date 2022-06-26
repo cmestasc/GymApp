@@ -4,6 +4,9 @@ import {Musculo} from '../interfaces/Musculo'
 import { Observable } from 'rxjs';
 import { Usuario } from '../classes/Usuario';
 import { DatosUsuario } from '../interfaces/DatosUsuario';
+import { TipoRutina } from '../interfaces/TipoRutina';
+import { Equipamiento } from '../interfaces/Equipamiento';
+import { Ejercicio } from '../interfaces/Ejercicios';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +16,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getMusculos():Observable<Musculo>{
-    return this.http.get(`${this.API_URI}/musculosimplicados`)
+  getMusculos():Observable<Musculo[]>{
+    return this.http.get<Musculo[]>(`${this.API_URI}/musculosimplicados`)
   }
 
   getMusculo(id:string){
@@ -43,5 +46,35 @@ export class ApiService {
   getDatosUsuario(ID_usuario: number):Observable<DatosUsuario>{
     let body = {"ID_usuario": ID_usuario}
     return this.http.post<DatosUsuario>(`${this.API_URI}/datosusuario`, body)
+  }
+
+  getTipoRutina():Observable<TipoRutina[]>{
+    return this.http.post<TipoRutina[]>(`${this.API_URI}/tipoRutina`,"")
+  }
+  getEquipamiento():Observable<Equipamiento[]>{
+    return this.http.post<Equipamiento[]>(`${this.API_URI}/equipamiento`,"")
+  }
+  postEjercicio(ejercicio: Ejercicio):Observable<Ejercicio>{
+    let body = { 
+      "nombre_ejercicio": ejercicio.nombre_ejercicio,         
+      "ID_musculo": ejercicio.ID_musculo,          
+      "ID_equipamiento": ejercicio.ID_equipamiento,
+      "realizacion": ejercicio.realizacion,
+      "video": ejercicio.video,
+    }
+    return this.http.post<Ejercicio>(`${this.API_URI}/ejercicios/create`,body)
+  }
+  getMusculoID(musculo: string):Observable<Musculo>{
+    let body = {      
+      "musculo": musculo
+    }
+    return this.http.post<Musculo>(`${this.API_URI}/musculosImplicados/musculoNombre`,body)
+  }
+
+  getDatosEjercicios(ID_musculo: number):Observable<Ejercicio[]>{
+    let body = {        
+      "ID_musculo": ID_musculo      
+    }
+    return this.http.post<Ejercicio[]>(`${this.API_URI}/ejercicios/ejercicio`,body)
   }
 }

@@ -1,0 +1,47 @@
+
+<form [formGroup]="ejercicioForm" (ngSubmit)="onSubmit()">
+<mat-form-field appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="formNombre">
+  </mat-form-field>
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Musculo</mat-label>
+    <mat-select formControlName="formMusculos">
+      <mat-option *ngFor="let musculo of musculos"  [value]="musculo.ID_musculo ">{{musculo.musculo}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Equipamiento</mat-label>
+    <mat-select formControlName="formEquipamiento">
+      <mat-option *ngFor="let equipamiento of equipamiento"  [value]="equipamiento.ID_equipamiento">{{equipamiento.equipamiento}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Realización</mat-label>
+    <textarea matInput formControlName="formRealizacion"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Video</mat-label>
+    <input matInput formControlName="formVideo">
+  </mat-form-field>
+<br>
+    <button mat-raised-button color="accent"
+            type="submit"
+            [disabled]="!ejercicioForm.valid"
+            >
+            Añadir
+    </button>
+    <button type="reset" 
+            mat-raised-button 
+            color="primary" 
+            id="buttonReset">
+            Reset
+    </button>
+
+</form>

@@ -1,19 +1,8 @@
 <div>
-    <h1 fxLayoutAlign="center">Listado de Ejercicios de {{musculo | titlecase}}</h1>
+    <h1 fxLayoutAlign="center">Listado de Ejercicios de {{musculo.musculo| titlecase}}</h1>
     <mat-divider></mat-divider>
 </div>
-<div fxLayout="row wrap"
-    fxLayout.xs="column"
-    fxLayoutAlign="center"
-    fxLayoutGap="20px">
 
-    <div fxFlex="20"
-        fxFlex.lg="15"
-        fxFlex.sm="30"
-        >
-
-        <app-ejercicio-tarjeta></app-ejercicio-tarjeta>
-    </div>
-</div>
+<app-lista-ejercicios [musculo]="musculo" *ngIf="musculo"></app-lista-ejercicios>
 
 

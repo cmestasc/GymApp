@@ -6,6 +6,7 @@ import { MusculoComponent } from './pages/musculo/musculo.component';
 import { ListadoComponent } from './pages/listado/listado.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { EditarComponent } from './pages/editar/editar.component';
+import { AddEjercicioComponent } from './pages/add-ejercicio/add-ejercicio.component';
 
 const routes: Routes = [
  
@@ -30,6 +31,10 @@ const routes: Routes = [
           {
             path: 'admin',
             component: AdminComponent
+          },
+          {
+            path: 'addEjercicio',
+            component: AddEjercicioComponent
           },
           {
             path: 'listado',

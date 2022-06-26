@@ -1,0 +1,27 @@
+mat-list-option{
+   
+}
+#contenido{
+    width: 100%;
+}
+
+#frame{
+    width: 75%;
+    margin-right: 40px;
+}
+
+mat-card{
+    
+    /* min-height: 500px;
+    max-width: 600px; */
+}
+iframe {
+    padding: 15px;
+    height: 600px;
+    width: 98%;
+}
+
+mat-selection-list{
+    width: 25%;
+}
+

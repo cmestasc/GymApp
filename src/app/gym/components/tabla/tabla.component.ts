@@ -58,6 +58,17 @@ export class TablaComponent implements OnInit {
   }
 
   getDatosUsuario(ID_usuario: number){
+    this.datosUsuario = {
+      nombre: null,
+      apellidos: null,
+      edad: null,
+      peso: null,
+      altura: null,
+      ciudad: null,
+      pais: null,
+      email: null,
+      ID_usuario: null
+      }
     this.apiService.getDatosUsuario(ID_usuario)
     .subscribe((respuesta)=>{
       console.log(respuesta)

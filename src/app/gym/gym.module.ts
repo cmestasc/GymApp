@@ -15,7 +15,10 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { TablaComponent } from './components/tabla/tabla.component';
 import { AcordeonComponent } from './components/acordeon/acordeon.component';
 import { EditarComponent } from './pages/editar/editar.component';
-
+import { AddEjercicioComponent } from './pages/add-ejercicio/add-ejercicio.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ListaEjerciciosComponent } from './components/lista-ejercicios/lista-ejercicios.component';
+import { SafePipePipe } from './pipes/safe-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -29,14 +32,18 @@ import { EditarComponent } from './pages/editar/editar.component';
     AdminComponent,
     TablaComponent,
     AcordeonComponent,
-    EditarComponent
+    EditarComponent,
+    AddEjercicioComponent,
+    ListaEjerciciosComponent,
+    SafePipePipe
   ],
   imports: [
     CommonModule,
     MaterialModule,
     RouterModule,
     GymRoutingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ReactiveFormsModule
   ],
   exports: [
     

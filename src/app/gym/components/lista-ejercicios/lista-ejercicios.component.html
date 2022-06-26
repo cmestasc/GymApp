@@ -1,0 +1,32 @@
+<!-- <mat-list role="list">
+    <mat-list-item role="listitem"  *ngFor="let ejercicio of ejercicios" >{{ejercicio.nombre_ejercicio}}</mat-list-item>
+</mat-list> -->
+
+<div fxLayout="row" fxLayoutGap="50px" id="contenido">
+    <mat-selection-list #ejerciciosLista [multiple]="false">
+        <mat-list-option *ngFor="let ejercicio of ejercicios" [value]="ejercicio">
+            {{ejercicio.nombre_ejercicio}}
+        </mat-list-option>
+    </mat-selection-list>
+
+    
+
+    <div *ngIf="ejerciciosLista.selectedOptions.selected[0]" fxLayout="column" id="frame">
+        <mat-card class="example-card">
+            <mat-card-subtitle>{{musculo.musculo}}</mat-card-subtitle>
+            <mat-card-title>{{ejerciciosLista.selectedOptions.selected[0]?.value.nombre_ejercicio}}</mat-card-title>
+            <mat-divider inset></mat-divider>
+            <br>
+            <mat-card-content>
+
+              <p>{{ejerciciosLista.selectedOptions.selected[0]?.value.realizacion}}</p>
+              
+            </mat-card-content>
+            <mat-divider inset></mat-divider>
+         
+            <mat-card-footer>
+                <iframe [src]="ejerciciosLista.selectedOptions.selected[0]?.value.video | safe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </mat-card-footer>
+          </mat-card>
+    </div>
+</div>
