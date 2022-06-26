@@ -1,4 +1,13 @@
 <div>
-    <h1 fxLayoutAlign="center">Listado de Rutinas</h1>
+    <h1 fxLayoutAlign="center">Listado de Programas</h1>
+    <div fxLayoutAlign="center">
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+        <mat-button-toggle value="bold" [routerLink]="['/gymApp/home/']">Home</mat-button-toggle>
+        <mat-button-toggle value="italic" checked="">Programas</mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+    <br>
     <mat-divider></mat-divider>
 </div>
+
+<app-lista-programas></app-lista-programas>

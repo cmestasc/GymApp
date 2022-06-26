@@ -22,6 +22,7 @@ import { SafePipePipe } from './pipes/safe-pipe.pipe';
 import { PrincipalComponent } from './pages/principal/principal.component';
 import { RutinasComponent } from './pages/rutinas/rutinas.component';
 import { TablaEjerciciosComponent } from './components/tabla-ejercicios/tabla-ejercicios.component';
+import { ListaProgramasComponent } from './components/lista-programas/lista-programas.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { TablaEjerciciosComponent } from './components/tabla-ejercicios/tabla-ej
     SafePipePipe,
     PrincipalComponent,
     RutinasComponent,
-    TablaEjerciciosComponent
+    TablaEjerciciosComponent,
+    ListaProgramasComponent
   ],
   imports: [
     CommonModule,

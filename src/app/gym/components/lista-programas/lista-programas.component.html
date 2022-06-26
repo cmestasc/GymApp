@@ -1,0 +1,32 @@
+<!-- <mat-list role="list">
+    <mat-list-item role="listitem"  *ngFor="let ejercicio of ejercicios" >{{ejercicio.nombre_ejercicio}}</mat-list-item>
+</mat-list> -->
+
+<div fxLayout="row" fxLayoutGap="50px" id="contenido">
+    <mat-selection-list #rutinaLista [multiple]="false">
+        <mat-list-option *ngFor="let rutina of rutinas" [value]="rutina">
+            {{rutina.nombre_rutina}}
+        </mat-list-option>
+    </mat-selection-list>
+
+    
+
+    <div *ngIf="rutinaLista.selectedOptions.selected[0]" fxLayout="column" id="frame">
+        <mat-card class="example-card">
+            <mat-card-subtitle>Programas</mat-card-subtitle>
+            <mat-card-title>{{rutinaLista.selectedOptions.selected[0]?.value.nombre_rutina}}</mat-card-title>
+            <mat-divider inset></mat-divider>
+            <br>
+            <mat-card-content>
+
+              <p>{{rutinaLista.selectedOptions.selected[0]?.value.realizacion}}</p>
+              
+            </mat-card-content>
+            <mat-divider inset></mat-divider>
+         
+            <mat-card-footer>
+                <iframe [src]="rutinaLista.selectedOptions.selected[0]?.value.video | safe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </mat-card-footer>
+          </mat-card>
+    </div>
+</div>

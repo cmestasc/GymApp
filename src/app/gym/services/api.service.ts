@@ -8,6 +8,7 @@ import { Equipamiento } from '../interfaces/Equipamiento';
 import { Ejercicio } from '../interfaces/Ejercicios';
 import { Usuario } from '../interfaces/Usuario';
 import { Clima } from '../interfaces/Clima';
+import { Rutina } from '../interfaces/Rutina';
 
 @Injectable({
   providedIn: 'root'
@@ -91,6 +92,10 @@ export class ApiService {
 
   getEjercicios():Observable<Ejercicio[]>{
     return this.http.post<Ejercicio[]>(`${this.API_URI}/ejercicios`,"")
+  }
+
+  getRutinas():Observable<Rutina[]>{
+    return this.http.post<Rutina[]>(`${this.API_URI}/rutinas`,"")
   }
 
   postDatosUsuario(datos: DatosUsuario):Observable<any>{
