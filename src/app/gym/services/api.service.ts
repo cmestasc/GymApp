@@ -9,6 +9,7 @@ import { Ejercicio } from '../interfaces/Ejercicios';
 import { Usuario } from '../interfaces/Usuario';
 import { Clima } from '../interfaces/Clima';
 import { Rutina } from '../interfaces/Rutina';
+import { DatosRutina } from '../interfaces/datosRutina';
 
 @Injectable({
   providedIn: 'root'
@@ -90,12 +91,31 @@ export class ApiService {
     return this.http.post<Ejercicio[]>(`${this.API_URI}/ejercicios/ejercicio`,body)
   }
 
+  getRutinas():Observable<Rutina[]>{
+
+    return this.http.post<Rutina[]>(`${this.API_URI}/rutinas`,"")
+  }
+
   getEjercicios():Observable<Ejercicio[]>{
     return this.http.post<Ejercicio[]>(`${this.API_URI}/ejercicios`,"")
   }
 
-  getRutinas():Observable<Rutina[]>{
-    return this.http.post<Rutina[]>(`${this.API_URI}/rutinas`,"")
+  getDatosRutinas():Observable<DatosRutina[]>{
+    return this.http.post<DatosRutina[]>(`${this.API_URI}/datos_rutina`,"")
+  }
+
+  getDatosRutina(ID_rutina: number):Observable<DatosRutina[]>{
+    let body = {        
+      "ID_rutina": ID_rutina      
+    }
+    return this.http.post<DatosRutina[]>(`${this.API_URI}/datos_rutina/rutina`,body)
+  }
+
+  deleteEjercicio(ID_ejercicio: number):Observable<any>{
+    let body = {        
+      "ID_ejercicio": ID_ejercicio      
+    }
+    return this.http.post<any>(`${this.API_URI}/ejercicios/delete`,body)
   }
 
   postDatosUsuario(datos: DatosUsuario):Observable<any>{
@@ -111,6 +131,21 @@ export class ApiService {
       "ID_usuario": datos.ID_usuario
     }
     return this.http.post<any>(`${this.API_URI}/datosUsuario/insertDatos`,body)
+  }
+
+  updateDatosUsuario(datos: DatosUsuario):Observable<any>{
+    let body = { 
+      "nombre": datos.nombre,         
+      "apellidos": datos.apellidos,          
+      "edad": datos.edad,
+      "peso": datos.peso,
+      "altura": datos.altura,
+      "ciudad": datos.ciudad,
+      "pais": datos.pais,
+      "email": datos.email,
+      "ID_usuario": datos.ID_usuario
+    }
+    return this.http.post<any>(`${this.API_URI}/datosUsuario/update`,body)
   }
 
   postUsuario(datos: Usuario):Observable<any>{
@@ -129,10 +164,8 @@ export class ApiService {
     return this.http.post<any>(`${this.API_URI}/usuarios/getID`,body)
   }
 
-  getTiempo():Observable<Clima>{
-    return this.http.get<Clima>(`https://www.el-tiempo.net/api/json/v2/provincias/39`)
-    .pipe(
-      delay(3000)
-    )
+  getTiempo(clave: number):Observable<Clima>{
+    return this.http.get<Clima>(`https://www.el-tiempo.net/api/json/v2/provincias/${clave}`)
+   
   }
 }

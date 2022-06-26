@@ -20,12 +20,14 @@
             </a>
             <a routerLink="./listado"
                 mat-list-item
+                disabled="true"
                 (click)="sidenav.toggle()">
                 <mat-icon mat-list-icon>create</mat-icon>
                 <span>Seguimiento</span>
             </a>
             <a routerLink="./listado"
                 mat-list-item
+                disabled="true"
                 (click)="sidenav.toggle()">
                 <mat-icon mat-list-icon>file_copy</mat-icon>
                 <span>Histórico</span>
@@ -68,10 +70,11 @@
                 (click)="sidenav.toggle() ">
             <mat-icon>menu</mat-icon>
         </button>
-
+        <span>&nbsp; &nbsp; &nbsp;</span>
+        <span>{{hora}}</span>
         <span class="spacer"></span>
 
-        <span>Bienvenido {{usuario}}</span>
+        <span>Bienvenido {{usuario | titlecase}}</span>
         <span>&nbsp; &nbsp; &nbsp;</span>
         <button mat-button
         (click)="logOut()"

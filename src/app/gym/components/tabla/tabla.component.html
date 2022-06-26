@@ -33,10 +33,10 @@
             <mat-list-item role="listitem"><strong>Email:&nbsp;</strong> {{datosUsuario.email}}</mat-list-item>
           </mat-list>
           <span class="example-element-description-attribution">
-            <button mat-button color="warn" [routerLink]="['./editar', element.ID_usuario]">
+            <button mat-button color="warn" [routerLink]="['/gymApp/editar/usuario']">
               Editar
             </button>
-            <button mat-button color="warn" (click)="eliminar(element.ID_usuario)">
+            <button mat-button color="warn" (click)="borrar(element.ID_usuario)">
               Eliminar
             </button>
           </span>

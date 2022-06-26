@@ -1,0 +1,70 @@
+<div id="titulo">
+    <h1 fxLayoutAlign="center">Editar Información Personal</h1>
+    <div fxLayoutAlign="center">
+      <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle value="bold" [routerLink]="['/gymApp/home/']">Home</mat-button-toggle>
+      <mat-button-toggle value="bold" checked="">Editar Información</mat-button-toggle>
+      </mat-button-toggle-group>
+  </div>
+  <br>
+    <mat-divider></mat-divider>
+  </div>
+  
+  <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="formNombre">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Apellidos</mat-label>
+        <input matInput formControlName="formApellidos">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Edad</mat-label>
+        <input matInput formControlName="formEdad">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Peso</mat-label>
+        <input type="number" matInput formControlName="formPeso">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Altura</mat-label>
+        <input type="number" matInput formControlName="formAltura">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Ciudad</mat-label>
+        <input matInput formControlName="formCiudad">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Pais</mat-label>
+        <input matInput formControlName="formPais">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="formEmail">
+      </mat-form-field>
+
+  
+  <br>
+  <div id="botones">
+      <button mat-raised-button color="accent"
+              type="submit"
+              [disabled]="!usuarioForm.valid"
+              >
+              Aceptar
+      </button>
+      <button type="reset" 
+              mat-raised-button 
+              color="primary" 
+              id="buttonReset">
+              Reset
+      </button>
+    </div>
+  </form>

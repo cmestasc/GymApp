@@ -5,6 +5,9 @@ import { DatosUsuario } from '../../interfaces/DatosUsuario';
 import { Usuario } from '../../interfaces/Usuario';
 import { ApiService } from '../../services/api.service';
 import { Ejercicio } from '../../interfaces/Ejercicios';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmarEjercicioComponent } from '../confirmar-ejercicio/confirmar-ejercicio.component';
 
 @Component({
   selector: 'app-tabla-ejercicios',
@@ -32,13 +35,14 @@ export class TablaEjerciciosComponent implements OnInit {
     email: '',
     ID_usuario: 0
     }
-  columnsToDisplay = ['nombre_ejercicio', 'ID_musculo', 'ID_equipamiento', 'realizacion', 'video'];
+  columnsToDisplay = ['nombre_ejercicio', 'ID_musculo', 'ID_equipamiento', 'video'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement: | null | undefined;
   displayedColumns: string[] = ['id', 'usuario', 'tipoUsuario', 'eliminar'];
   usuarios: Usuario[] = [];
   @ViewChild('miTabla') miTabla: MatTable<any> | undefined
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private snackbar: MatSnackBar,
+    public dialog: MatDialog) { }
  
   
 
@@ -75,4 +79,28 @@ export class TablaEjerciciosComponent implements OnInit {
       this.datosUsuario = respuesta;
     });
   }
-}
+
+
+  borrar(ID_ejercicio:number){
+    const dialog = this.dialog.open(ConfirmarEjercicioComponent, {
+      width: '350px',
+      data: this.datosUsuario
+    });
+
+    dialog.afterClosed().subscribe(
+      (result)=>{
+        if(result){
+          console.log(ID_ejercicio)
+          this.apiService.deleteEjercicio(ID_ejercicio)
+          .subscribe(res=>{console.log(res)})
+          window.location.reload();
+        }
+          })
+        }
+      }
+    
+
+
+  
+
+

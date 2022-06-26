@@ -23,6 +23,10 @@ import { PrincipalComponent } from './pages/principal/principal.component';
 import { RutinasComponent } from './pages/rutinas/rutinas.component';
 import { TablaEjerciciosComponent } from './components/tabla-ejercicios/tabla-ejercicios.component';
 import { ListaProgramasComponent } from './components/lista-programas/lista-programas.component';
+import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
+import { ConfirmarComponent } from './components/confirmar/confirmar.component';
+import { ConfirmarEjercicioComponent } from './components/confirmar-ejercicio/confirmar-ejercicio.component';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +47,10 @@ import { ListaProgramasComponent } from './components/lista-programas/lista-prog
     PrincipalComponent,
     RutinasComponent,
     TablaEjerciciosComponent,
-    ListaProgramasComponent
+    ListaProgramasComponent,
+    EditarUsuarioComponent,
+    ConfirmarComponent,
+    ConfirmarEjercicioComponent
   ],
   imports: [
     CommonModule,

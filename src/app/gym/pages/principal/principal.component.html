@@ -3,8 +3,8 @@
     <div fxLayoutAlign="center">
         <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
         <mat-button-toggle value="bold" checked [routerLink]="['/gymApp/home/']">Home</mat-button-toggle>
-        <mat-button-toggle value="bold" [routerLink]="['/gymApp/seguimiento/']">Seguimiento</mat-button-toggle>
-        <mat-button-toggle value="bold" [routerLink]="['/gymApp/historico/']">Histórico</mat-button-toggle>
+        <mat-button-toggle value="bold" disabled="true" [routerLink]="['/gymApp/seguimiento/']">Seguimiento</mat-button-toggle>
+        <mat-button-toggle value="bold" disabled="true" [routerLink]="['/gymApp/historico/']">Histórico</mat-button-toggle>
         <mat-button-toggle value="bold" [routerLink]="['/gymApp/programas/']">Programas</mat-button-toggle>
         <mat-button-toggle value="bold" [routerLink]="['/gymApp/ejercicios/listado/']">Ejercicios</mat-button-toggle>
         <mat-button-toggle value="bold" [routerLink]="['/gymApp/ejercicios/addEjercicio/']">Agregar Ejercicio</mat-button-toggle>
@@ -44,7 +44,7 @@
         <mat-card-actions>
             <button mat-button 
                     color="warn"
-                 
+                    [routerLink]="['/gymApp/editar/usuario']"
                     >
                 Modificar
             </button>
@@ -52,17 +52,22 @@
     </mat-card>
 
 
-    <mat-card id="clima" *ngIf="clima; else cargando">
+    <mat-card id="clima" *ngIf="clima; else cargando" fxLayout="column">
+       
         <mat-card-header>
             <mat-card-title class="climaT">{{clima.title}}</mat-card-title>
             <mat-card-subtitle class="clima"> <strong>Hoy: </strong>{{clima.today.p}}</mat-card-subtitle>
             <mat-card-subtitle class="clima"> <strong>Mañana: </strong>{{clima.tomorrow.p}}</mat-card-subtitle>
-
-            <mat-card-title class="climaT">{{clima.ciudades[2].name}}</mat-card-title>
-            <mat-card-subtitle class="clima"><strong>Estado del cielo: </strong>{{clima.ciudades[2].stateSky.description}}</mat-card-subtitle>
-            <mat-card-subtitle class="clima"><strong>Temperatura máxima: </strong>{{clima.ciudades[2].temperatures.max}} °C</mat-card-subtitle>
-            <mat-card-subtitle class="clima"><strong>Temperatura mínima: </strong>{{clima.ciudades[2].temperatures.min}} °C</mat-card-subtitle>
         </mat-card-header>
+        <mat-divider inset></mat-divider>
+            <div *ngFor="let ciudad of clima.ciudades" fxLayout="row">
+                <div>
+                    <mat-card-title class="climaT">{{ciudad.name}}</mat-card-title>
+                    <mat-card-subtitle class="clima"><strong>Estado del cielo: </strong>{{ciudad.stateSky.description}} <strong>Máx: </strong>{{ciudad.temperatures.max}}°C <strong>Mín: </strong>{{ciudad.temperatures.min}}°C</mat-card-subtitle>
+                    <mat-divider inset></mat-divider>
+                </div>
+            </div>
+        
          
     </mat-card>
 

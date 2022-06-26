@@ -7,7 +7,7 @@ export interface DatosUsuario {
     ciudad: string | null;
     pais: string | null;
     email: string | null;
-    ID_usuario: number | null;
+    ID_usuario?: number | null;
     }
 
 

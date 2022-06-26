@@ -14,16 +14,16 @@ import Swal from "sweetalert2";
 })
 export class RegistroComponent implements OnInit {
   miFormulario: FormGroup = this.fb.group({
-    nombre: ['a',[Validators.required]],
-    apellidos: ['a',[Validators.required]],
-    edad: ['1',[Validators.required]],
-    peso: ['1',[Validators.required]],
-    altura: ['1',[Validators.required]],
-    ciudad: ['a',[Validators.required]],
-    pais: ['a',[Validators.required]],
-    email: ['as@a',[Validators.required, Validators.email]],
-    usuario: ['carlos',[Validators.required, Validators.minLength(3)]],
-    password: ['carlos',[Validators.required, Validators.minLength(3)]],
+    nombre: ['',[Validators.required]],
+    apellidos: ['',[Validators.required]],
+    edad: ['',[Validators.required]],
+    peso: ['',[Validators.required]],
+    altura: ['',[Validators.required]],
+    ciudad: ['',[Validators.required]],
+    pais: ['',[Validators.required]],
+    email: ['@gmail.es',[Validators.required, Validators.email]],
+    usuario: ['',[Validators.required, Validators.minLength(3)]],
+    password: ['',[Validators.required, Validators.minLength(3)]],
   })
 
   datosUsuario:DatosUsuario = {
@@ -60,7 +60,7 @@ export class RegistroComponent implements OnInit {
       .subscribe(res=>{
         this.datosUsuario.ID_usuario=res.ID;
         this.datosUsuario.nombre = this.miFormulario.controls["nombre"].value;
-        this.datosUsuario.apellidos = this.miFormulario.controls["password"].value;
+        this.datosUsuario.apellidos = this.miFormulario.controls["apellidos"].value;
         this.datosUsuario.edad = this.miFormulario.controls["edad"].value;
         this.datosUsuario.peso = this.miFormulario.controls["peso"].value;
         this.datosUsuario.altura = this.miFormulario.controls["altura"].value;

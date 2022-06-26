@@ -17,16 +17,24 @@
             <mat-card-title>{{rutinaLista.selectedOptions.selected[0]?.value.nombre_rutina}}</mat-card-title>
             <mat-divider inset></mat-divider>
             <br>
-            <mat-card-content>
-
-              <p>{{rutinaLista.selectedOptions.selected[0]?.value.realizacion}}</p>
-              
+            <mat-card-content *ngIf='rutinaLista.selectedOptions.selected[0].value.ID_rutina === 1'>
+                <p *ngFor="let datos of rutinaFuerza">{{datos}}</p>
+            </mat-card-content>
+            <mat-card-content *ngIf='rutinaLista.selectedOptions.selected[0].value.ID_rutina === 2'>
+                <p *ngFor="let datos of rutina2">{{datos}}</p>
+            </mat-card-content>
+            <mat-card-content *ngIf='rutinaLista.selectedOptions.selected[0].value.ID_rutina === 3'>
+                <p *ngFor="let datos of rutina3">{{datos}}</p>
+            </mat-card-content>
+            <mat-card-content *ngIf='rutinaLista.selectedOptions.selected[0].value.ID_rutina === 4'>
+                <p *ngFor="let datos of rutina4">{{datos}}</p>
+            </mat-card-content>
+            <mat-card-content *ngIf='rutinaLista.selectedOptions.selected[0].value.ID_rutina === 5'>
+                <p *ngFor="let datos of rutina5">{{datos}}</p>
             </mat-card-content>
             <mat-divider inset></mat-divider>
          
-            <mat-card-footer>
-                <iframe [src]="rutinaLista.selectedOptions.selected[0]?.value.video | safe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </mat-card-footer>
+            
           </mat-card>
     </div>
 </div>

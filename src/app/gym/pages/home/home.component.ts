@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,8 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 export class HomeComponent implements OnInit {
 
   usuario!: string;
+
+  hora: any = moment().locale("es").format('LLLL');
 
   constructor(private router: Router,
               private authService: AuthService) { }

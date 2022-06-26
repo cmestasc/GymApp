@@ -4,6 +4,9 @@ import { MatTable } from '@angular/material/table';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { DatosUsuario } from '../../interfaces/DatosUsuario';
 import { Usuario } from '../../interfaces/Usuario';
+import { ConfirmarComponent } from '../confirmar/confirmar.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -38,7 +41,8 @@ export class TablaComponent implements OnInit {
   displayedColumns: string[] = ['id', 'usuario', 'tipoUsuario', 'eliminar'];
   usuarios: Usuario[] = [];
   @ViewChild('miTabla') miTabla: MatTable<any> | undefined
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private snackbar: MatSnackBar,
+    public dialog: MatDialog) { }
  
   
 
@@ -75,5 +79,19 @@ export class TablaComponent implements OnInit {
       this.datosUsuario = respuesta;
     });
   }
+  borrar(id: number){
+    const dialog = this.dialog.open(ConfirmarComponent, {
+      width: '350px',
+      data: this.datosUsuario
+    });
 
+    dialog.afterClosed().subscribe(
+      (result)=>{
+        if(result){
+          this.apiService.eliminarDatosUsuario(id).subscribe(res=>{console.log(res)})
+          this.apiService.eliminarUsuario(id).subscribe(res=>{console.log(res)})
+          window.location.reload();
+        }
+          })
+        }
 }

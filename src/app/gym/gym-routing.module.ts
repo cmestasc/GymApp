@@ -9,6 +9,7 @@ import { EditarComponent } from './pages/editar/editar.component';
 import { AddEjercicioComponent } from './pages/add-ejercicio/add-ejercicio.component';
 import { PrincipalComponent } from './pages/principal/principal.component';
 import { RutinasComponent } from './pages/rutinas/rutinas.component';
+import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
 
 const routes: Routes = [
  
@@ -23,6 +24,16 @@ const routes: Routes = [
       {
         path: 'programas',
         component: RutinasComponent,
+      },
+      {
+        path: 'editar',
+        component: HomeComponent,
+        children: [
+          {
+            path: 'usuario',
+            component: EditarUsuarioComponent
+          }
+        ]
       },
       {
         path: 'admin',

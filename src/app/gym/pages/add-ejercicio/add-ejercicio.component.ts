@@ -31,7 +31,7 @@ export class AddEjercicioComponent implements OnInit {
     formMusculos: [, [Validators.required]],
     formEquipamiento: [, [Validators.required]],
     formRealizacion: [, [Validators.required]],
-    formVideo: [, [Validators.required]]
+    formVideo: ['https://www.youtube.com/embed/kf0Af6A5wW8', [Validators.required]]
   });
 
   constructor(private fb: FormBuilder,
