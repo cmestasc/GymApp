@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(usuario, password)
     .subscribe(res=>{
       if(res.ok){
-        this.router.navigateByUrl('/gymApp')
+        this.router.navigateByUrl('/gymApp/home')
       } else{
         Swal.fire('Error', res, 'error')
         this.miFormulario.reset();

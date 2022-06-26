@@ -12,7 +12,7 @@
         </mat-toolbar>
 
         <mat-nav-list>
-            <a routerLink="./listado"
+            <a routerLink="./home"
                 mat-list-item
                 (click)="sidenav.toggle()">
                 <mat-icon mat-list-icon>home</mat-icon>
@@ -30,7 +30,7 @@
                 <mat-icon mat-list-icon>file_copy</mat-icon>
                 <span>Histórico</span>
             </a>
-            <a routerLink="./agregar"
+            <a routerLink="./programas"
                 mat-list-item
                 (click)="sidenav.toggle()">
                 <mat-icon mat-list-icon>library_books</mat-icon>
@@ -44,6 +44,14 @@
                 <mat-icon mat-list-icon>fitness_center</mat-icon>
                 <span>Ejercicios</span>
             </a>
+
+            <a routerLink="./ejercicios/addEjercicio"
+                mat-list-item
+                (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>add</mat-icon>
+                <span>Agregar Ejercicio</span>
+            </a>
+
             <mat-divider></mat-divider>
             <a routerLink="./admin"
                 mat-list-item
@@ -64,6 +72,7 @@
         <span class="spacer"></span>
 
         <span>Bienvenido {{usuario}}</span>
+        <span>&nbsp; &nbsp; &nbsp;</span>
         <button mat-button
         (click)="logOut()"
                 >

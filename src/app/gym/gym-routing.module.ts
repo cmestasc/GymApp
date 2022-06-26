@@ -7,6 +7,8 @@ import { ListadoComponent } from './pages/listado/listado.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { EditarComponent } from './pages/editar/editar.component';
 import { AddEjercicioComponent } from './pages/add-ejercicio/add-ejercicio.component';
+import { PrincipalComponent } from './pages/principal/principal.component';
+import { RutinasComponent } from './pages/rutinas/rutinas.component';
 
 const routes: Routes = [
  
@@ -14,6 +16,14 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     children: [
+      {
+        path: 'home',
+        component: PrincipalComponent,
+      },
+      {
+        path: 'programas',
+        component: RutinasComponent,
+      },
       {
         path: 'admin',
         component: AdminComponent,
@@ -48,7 +58,7 @@ const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: 'ejercicios'
+        redirectTo: 'home'
       }
     ]
   }

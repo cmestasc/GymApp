@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { GymModule } from './gym/gym.module';
-import {BreadcrumbModule} from 'xng-breadcrumb';
 import { ApiService } from "./gym/services/api.service";
 
 
@@ -20,8 +19,7 @@ import { ApiService } from "./gym/services/api.service";
     BrowserAnimationsModule,
     AppRoutingModule,
     GymModule,
-    HttpClientModule,
-    BreadcrumbModule
+    HttpClientModule
   ],
   providers: [
     ApiService

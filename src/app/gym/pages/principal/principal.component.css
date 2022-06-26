@@ -1,0 +1,29 @@
+mat-card {
+    margin: 40px;
+}
+
+#info{
+    width: 30%;
+}
+#clima{
+    width: 70%;
+}
+
+.clima{
+    font-size: 17px;
+}
+
+.climaT{
+    font-size: 28px;
+}
+
+mat-spinner{
+    margin: auto;
+    
+    width: 400px;
+}
+
+#cargando{
+    width: 70%;
+    text-align: center;
+}

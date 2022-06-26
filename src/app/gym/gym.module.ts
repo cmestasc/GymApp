@@ -19,6 +19,9 @@ import { AddEjercicioComponent } from './pages/add-ejercicio/add-ejercicio.compo
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListaEjerciciosComponent } from './components/lista-ejercicios/lista-ejercicios.component';
 import { SafePipePipe } from './pipes/safe-pipe.pipe';
+import { PrincipalComponent } from './pages/principal/principal.component';
+import { RutinasComponent } from './pages/rutinas/rutinas.component';
+import { TablaEjerciciosComponent } from './components/tabla-ejercicios/tabla-ejercicios.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { SafePipePipe } from './pipes/safe-pipe.pipe';
     EditarComponent,
     AddEjercicioComponent,
     ListaEjerciciosComponent,
-    SafePipePipe
+    SafePipePipe,
+    PrincipalComponent,
+    RutinasComponent,
+    TablaEjerciciosComponent
   ],
   imports: [
     CommonModule,

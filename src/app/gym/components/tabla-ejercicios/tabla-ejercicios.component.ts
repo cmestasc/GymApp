@@ -1,15 +1,15 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { ApiService } from '../../services/api.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
-import {animate, state, style, transition, trigger} from '@angular/animations';
 import { DatosUsuario } from '../../interfaces/DatosUsuario';
 import { Usuario } from '../../interfaces/Usuario';
-
+import { ApiService } from '../../services/api.service';
+import { Ejercicio } from '../../interfaces/Ejercicios';
 
 @Component({
-  selector: 'app-tabla',
-  templateUrl: './tabla.component.html',
-  styleUrls: ['./tabla.component.css'],
+  selector: 'app-tabla-ejercicios',
+  templateUrl: './tabla-ejercicios.component.html',
+  styleUrls: ['./tabla-ejercicios.component.css'],
   animations:[
     trigger('detailExpand', [
       state('collapsed', style({height: '0px', minHeight: '0'})),
@@ -18,9 +18,9 @@ import { Usuario } from '../../interfaces/Usuario';
     ]),
   ],
 })
-export class TablaComponent implements OnInit {
+export class TablaEjerciciosComponent implements OnInit {
 
-  dataSource: Usuario[]= [];
+  dataSource: Ejercicio[]= [];
   datosUsuario: DatosUsuario = {
     nombre: '',
     apellidos: '',
@@ -32,7 +32,7 @@ export class TablaComponent implements OnInit {
     email: '',
     ID_usuario: 0
     }
-  columnsToDisplay = ['ID_usuario', 'usuario', 'ID_tipo_usuario'];
+  columnsToDisplay = ['nombre_ejercicio', 'ID_musculo', 'ID_equipamiento', 'realizacion', 'video'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement: | null | undefined;
   displayedColumns: string[] = ['id', 'usuario', 'tipoUsuario', 'eliminar'];
@@ -43,7 +43,7 @@ export class TablaComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.apiService.getUsuarios().
+    this.apiService.getEjercicios().
     subscribe((respuesta)=>{
       console.log(respuesta)
       this.dataSource = respuesta;
@@ -75,5 +75,4 @@ export class TablaComponent implements OnInit {
       this.datosUsuario = respuesta;
     });
   }
-
 }

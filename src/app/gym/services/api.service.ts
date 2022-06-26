@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import {Musculo} from '../interfaces/Musculo'
-import { Observable } from 'rxjs';
-import { Usuario } from '../classes/Usuario';
+import { delay, Observable } from 'rxjs';
 import { DatosUsuario } from '../interfaces/DatosUsuario';
 import { TipoRutina } from '../interfaces/TipoRutina';
 import { Equipamiento } from '../interfaces/Equipamiento';
 import { Ejercicio } from '../interfaces/Ejercicios';
+import { Usuario } from '../interfaces/Usuario';
+import { Clima } from '../interfaces/Clima';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +41,17 @@ export class ApiService {
     return this.http.get<Usuario[]>(`${this.API_URI}/usuarios`)
   }
   eliminarUsuario(id: number):Observable<any>{
-    return this.http.delete<any>(`${this.API_URI}/usuarios/${id}`)
+    let body = { 
+      ID_usuario: id 
+    }
+    return this.http.delete<any>(`${this.API_URI}/usuarios/delete`, {body})
+  }
+
+  eliminarDatosUsuario(id: number):Observable<any>{
+    let body = { 
+      ID_usuario: id 
+    }
+    return this.http.delete<any>(`${this.API_URI}/datosUsuario/delete`, {body})
   }
 
   getDatosUsuario(ID_usuario: number):Observable<DatosUsuario>{
@@ -76,5 +87,47 @@ export class ApiService {
       "ID_musculo": ID_musculo      
     }
     return this.http.post<Ejercicio[]>(`${this.API_URI}/ejercicios/ejercicio`,body)
+  }
+
+  getEjercicios():Observable<Ejercicio[]>{
+    return this.http.post<Ejercicio[]>(`${this.API_URI}/ejercicios`,"")
+  }
+
+  postDatosUsuario(datos: DatosUsuario):Observable<any>{
+    let body = { 
+      "nombre": datos.nombre,         
+      "apellidos": datos.apellidos,          
+      "edad": datos.edad,
+      "peso": datos.peso,
+      "altura": datos.altura,
+      "ciudad": datos.ciudad,
+      "pais": datos.pais,
+      "email": datos.email,
+      "ID_usuario": datos.ID_usuario
+    }
+    return this.http.post<any>(`${this.API_URI}/datosUsuario/insertDatos`,body)
+  }
+
+  postUsuario(datos: Usuario):Observable<any>{
+    let body = { 
+      usuario: datos.usuario,         
+      password: datos.password,          
+      ID_tipo_usuario: 3
+    }
+    return this.http.post<any>(`${this.API_URI}/usuarios/insertar`,body)
+  }
+
+  getID(usuario: string):Observable<any>{
+    let body = { 
+      usuario: usuario
+    }
+    return this.http.post<any>(`${this.API_URI}/usuarios/getID`,body)
+  }
+
+  getTiempo():Observable<Clima>{
+    return this.http.get<Clima>(`https://www.el-tiempo.net/api/json/v2/provincias/39`)
+    .pipe(
+      delay(3000)
+    )
   }
 }

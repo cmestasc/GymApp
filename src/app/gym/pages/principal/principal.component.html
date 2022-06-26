@@ -1,0 +1,71 @@
+<div>
+    <h1 fxLayoutAlign="center">Home</h1>
+    <mat-divider></mat-divider>
+</div>
+<div fxLayout="row">
+    <mat-card id="info">
+        <mat-card-header>
+            <mat-card-title>Nombre</mat-card-title>
+            <mat-card-subtitle>{{datosUsuario.nombre}}</mat-card-subtitle>
+
+            <mat-card-title>Apellidos</mat-card-title>
+            <mat-card-subtitle>{{datosUsuario.apellidos}}</mat-card-subtitle>
+
+            <mat-card-title>Edad</mat-card-title>
+            <mat-card-subtitle>{{datosUsuario.edad | number}}</mat-card-subtitle>
+
+            <mat-card-title>Peso</mat-card-title>
+            <mat-card-subtitle>{{datosUsuario.peso}} kg</mat-card-subtitle>
+
+            <mat-card-title>Altura</mat-card-title>
+            <mat-card-subtitle>{{datosUsuario.altura}} cm</mat-card-subtitle>
+
+            <mat-card-title>Ciudad</mat-card-title>
+            <mat-card-subtitle>{{datosUsuario.ciudad}}</mat-card-subtitle>
+
+            <mat-card-title>Pais</mat-card-title>
+            <mat-card-subtitle>{{datosUsuario.pais}}</mat-card-subtitle>
+
+            <mat-card-title>Email</mat-card-title>
+            <mat-card-subtitle>{{datosUsuario.email}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions>
+            <button mat-button 
+                    color="warn"
+                 
+                    >
+                Modificar
+            </button>
+        </mat-card-actions>
+    </mat-card>
+
+
+    <mat-card id="clima" *ngIf="clima; else cargando">
+        <mat-card-header>
+            <mat-card-title class="climaT">{{clima.title}}</mat-card-title>
+            <mat-card-subtitle class="clima"> <strong>Hoy: </strong>{{clima.today.p}}</mat-card-subtitle>
+            <mat-card-subtitle class="clima"> <strong>Mañana: </strong>{{clima.tomorrow.p}}</mat-card-subtitle>
+
+            <mat-card-title class="climaT">{{clima.ciudades[2].name}}</mat-card-title>
+            <mat-card-subtitle class="clima"><strong>Estado del cielo: </strong>{{clima.ciudades[2].stateSky.description}}</mat-card-subtitle>
+            <mat-card-subtitle class="clima"><strong>Temperatura máxima: </strong>{{clima.ciudades[2].temperatures.max}} °C</mat-card-subtitle>
+            <mat-card-subtitle class="clima"><strong>Temperatura mínima: </strong>{{clima.ciudades[2].temperatures.min}} °C</mat-card-subtitle>
+        </mat-card-header>
+         
+    </mat-card>
+
+    <ng-template #cargando>
+        <mat-card id="cargando">
+            <br><br><br>
+            <mat-spinner diameter="200"></mat-spinner>
+            <br>
+            <mat-card-subtitle class="cargandoTexto">Obteniendo datos climáticos...</mat-card-subtitle>
+        </mat-card>
+    </ng-template>
+
+
+
+
+
+
+</div>

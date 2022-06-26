@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { AuthResponse, Usuario } from '../interfaces/interfaces';
+import { AuthResponse } from '../interfaces/interfaces';
 import { catchError, map, of, tap, Observable } from 'rxjs';
+import { Usuario } from 'src/app/gym/interfaces/Usuario';
 
 
 @Injectable({
